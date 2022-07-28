@@ -41,7 +41,8 @@
         public function update_asignatura($CodigoAsignatura, $NombreAsignatura, $Carrera, $FechaCreacion, $UnidadesValorativas, $PromedioAprobacion, $NumeroEdificio){
             $conectar= parent:: conexion();
             parent::set_names();
-            $sql="UPDATE Asignatura set NombreAsignatura=?, Carrera=?, FechaCreacion=?, UnidadesValorativas=?, PromedioAprobacion=?, NumeroEdificio=?, WHERE (CodigoAsignatura = ?);";
+            $sql="UPDATE Asignatura set NombreAsignatura=?, Carrera=?, FechaCreacion=?, UnidadesValorativas=?, PromedioAprobacion=?, NumeroEdificio=? 
+            WHERE CodigoAsignatura=?;";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$NombreAsignatura);
             $sql->bindValue(2,$Carrera);

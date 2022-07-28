@@ -13,7 +13,7 @@
     header('Content-Type: application/json');
 
     require_once("../config/Conexion.php");
-    require_once("../models/Estudiantes.php");
+    require_once("../models/Asignatura.php");
     $asignatur = new asignatura();
 
     $body=json_decode(file_get_contents("php://input"),true);
@@ -25,22 +25,22 @@
         break;
 
         case "GetAsignatura":
-            $datos=$asignatur->get_asignatura($body["Codigo_Asignatura"]);
+            $datos=$asignatur->get_asignatura($body["CodigoAsignatura"]);
             echo json_encode($datos);
         break;
 
         case "InsertAsignatura":
-            $datos=$asignatur->insert_asignatura($body["Codigo_Asignatura"],$body["Nombre_Asignatura"],$body["Carrera"],$body["Fecha_Creacion"],$body["Unidades_Valorativas"],$body["Promedio_Aprobacion"],$body["Numero_Edificio"]);
+            $datos=$asignatur->insert_asignatura($body["CodigoAsignatura"],$body["NombreAsignatura"],$body["Carrera"],$body["FechaCreacion"],$body["UnidadesValorativas"],$body["PromedioAprobacion"],$body["NumeroEdificio"]);
             echo json_encode("-> ¡Asignatura agregada con éxito!");
         break;
 
-        case "UpdatevAsignatura":
-            $datos=$asignatur->update_asignatura($body["Codigo_Asignatura"],$body["Nombre_Asignatura"],$body["Carrera"],$body["Fecha_Creacion"],$body["Unidades_Valorativas"],$body["Promedio_Aprobacion"],$body["Numero_Edificio"]);
+        case "UpdateAsignatura":
+            $datos=$asignatur->update_asignatura($body["CodigoAsignatura"],$body["NombreAsignatura"],$body["Carrera"],$body["FechaCreacion"],$body["UnidadesValorativas"],$body["PromedioAprobacion"],$body["NumeroEdificio"]);
             echo json_encode("-> ¡La Asignatuura ha sido actualizada con éxito!");
         break;
 
         case "DeleteAsignatura":
-            $datos=$asignatur->delete_asignatura($body["Codigo_Asignatura"]);
+            $datos=$asignatur->delete_asignatura($body["CodigoAsignatura"]);
             echo json_encode("-> !La asignatura ha sido eliminada con éxito!");
         break;
     }
